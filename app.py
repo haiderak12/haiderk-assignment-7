@@ -56,18 +56,16 @@ def generate_data(N, mu, beta0, beta1, sigma2, S):
         intercepts.append(sim_intercept)
 
     # TODO 8: Plot histograms of slopes and intercepts
+    plt.figure(figsize=(10, 5))
+    plt.hist(slopes, bins=20, alpha=0.5, color="blue", label="Slopes")
+    plt.hist(intercepts, bins=20, alpha=0.5, color="orange", label="Intercepts")
+    plt.axvline(slope, color="blue", linestyle="--", linewidth=1, label=f"Slope: {slope:.2f}")
+    plt.axvline(intercept, color="orange", linestyle="--", linewidth=1, label=f"Intercept: {intercept:.2f}")
+    plt.title("Histogram of Slopes and Intercepts")
+    plt.xlabel("Value")
+    plt.ylabel("Frequency")
+    plt.legend()
     plot2_path = "static/plot2.png"
-    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5))
-    ax1.hist(slopes, bins=20, alpha=0.7)
-    ax1.axvline(slope, color='red', linestyle='--', label='Observed')
-    ax1.set_title('Distribution of Slopes')
-    ax1.legend()
-    
-    ax2.hist(intercepts, bins=20, alpha=0.7)
-    ax2.axvline(intercept, color='red', linestyle='--', label='Observed')
-    ax2.set_title('Distribution of Intercepts')
-    ax2.legend()
-    plt.tight_layout()
     plt.savefig(plot2_path)
     plt.close()
     # Replace with code to generate and save the histogram plot
